@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Brewdog</h1>
+    <beer-details :beer="selectedBeer"></beer-details>
     <list-of-beers :beers="beers"></list-of-beers>
   </div>
 </template>
@@ -8,13 +9,16 @@
 <script>
 import {eventBus} from './main.js';
 import BeerList from './components/BeerList.vue';
+import BeerDetails from './components/BeerDetails'
+import FavouriteBeers from './components/FavouriteBeers'
 
 export default {
   name: 'App',
   data(){
     return{
       beers:[],
-      selectedBeer:null
+      selectedBeer:null,
+      favouriteBeers:[]
     }
   },
   mounted(){
@@ -22,10 +26,17 @@ export default {
     .then(res =>res.json())
     .then(data => this.beers=data)
 
-  eventBus.$on('beer-selected')
+  eventBus.$on('beer-selected', (beer)=>{
+    this.selectedBeer=beer;
+
+  eventBus.$on('fave-beer', (beer)=>{
+    this.favouriteBeers.push(beer)
+  })
+  })
   },
   components:{
-    "list-of-beers":BeerList
+    "list-of-beers":BeerList,
+    "beer-details":BeerDetails
   },
 }
 </script>

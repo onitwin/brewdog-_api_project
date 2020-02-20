@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
   <ul>
-    <list-item v-for="(beer,index,image_url) in beers" :beer="beer" :key="index"></list-item>
+    <list-item v-for="(beer,index) in beers" :beer="beer" :key="index"></list-item>
   </ul>
 </div>
 

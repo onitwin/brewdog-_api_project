@@ -1,7 +1,7 @@
 <template lang="html">
   <li v-on:click="handleClick">{{beer.name}}
     <div id="list-item-style">
-      <img id="sub" :src="beer.image_url">
+      <img :src="beer.image_url">
     </div>
 </li>
 
