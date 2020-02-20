@@ -1,5 +1,10 @@
 <template lang="html">
-  <li v-on:click="handleClick">{{beer.name}}</li>
+  <li v-on:click="handleClick">{{beer.name}}
+    <div id="list-item-style">
+      <img id="sub" :src="beer.image_url">
+    </div>
+</li>
+
 </template>
 
 <script>
@@ -16,4 +21,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+img {
+  height: 200px;
+}
 </style>
